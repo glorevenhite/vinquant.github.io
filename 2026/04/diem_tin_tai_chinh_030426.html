@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Điểm Tin Tài Chính — 03/04/2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0D0F14;
+  --surface: #13161D;
+  --surface-2: #1A1E27;
+  --border: #262B38;
+  --border-accent: #3A4158;
+  --text: #E8EAF0;
+  --text-muted: #8B92A8;
+  --text-dim: #5C6380;
+  --accent: #C9A96E;
+  --accent-light: #E4D4A5;
+  --accent-dim: rgba(201,169,110,0.12);
+  --red: #E05252;
+  --green: #4CAF78;
+  --blue: #5B8DEF;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Source Serif 4',Georgia,serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;}
+.newsletter{max-width:780px;margin:0 auto;padding:40px 24px 80px;}
+
+.header{text-align:center;padding:48px 0 40px;border-bottom:1px solid var(--border);margin-bottom:40px;position:relative;}
+.header::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:40px;height:3px;background:var(--accent);}
+.header-label{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+.header h1{font-family:'Playfair Display',serif;font-size:38px;font-weight:800;line-height:1.2;color:var(--text);margin-bottom:12px;}
+.header-date{font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text-muted);letter-spacing:0.5px;}
+
+.summary-box{background:linear-gradient(135deg,var(--surface) 0%,var(--surface-2) 100%);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:6px;padding:28px 32px;margin-bottom:44px;}
+.summary-box h3{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+.summary-box p{font-size:15px;color:var(--text-muted);line-height:1.8;}
+
+.ticker-strip{display:flex;justify-content:space-between;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:16px 12px;margin-bottom:44px;}
+.tick{text-align:center;flex:1;}
+.tick+.tick{border-left:1px solid var(--border);}
+.tick-name{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);margin-bottom:4px;}
+.tick-value{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:500;color:var(--text);}
+.tick-change{font-family:'JetBrains Mono',monospace;font-size:12px;margin-top:2px;}
+.tick-change.up{color:var(--green);}
+.tick-change.down{color:var(--red);}
+
+.section{margin-bottom:44px;}
+.section-tag{display:inline-block;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);background:var(--accent-dim);padding:4px 12px;border-radius:3px;margin-bottom:14px;}
+.section h2{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;line-height:1.3;margin-bottom:18px;color:var(--text);}
+.section p{margin-bottom:16px;color:var(--text-muted);font-size:15.5px;}
+.section p:last-child{margin-bottom:0;}
+
+.highlight{border-left:2px solid var(--accent);padding-left:24px;margin:24px 0;font-style:italic;color:var(--accent-light);font-size:16px;line-height:1.7;}
+
+.data-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:24px 28px;margin:20px 0;}
+.data-card h4{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:14px;}
+.data-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-family:'DM Sans',sans-serif;font-size:14px;}
+.data-row:last-child{border-bottom:none;}
+.data-label{color:var(--text-muted);}
+.data-value{font-family:'JetBrains Mono',monospace;font-weight:500;color:var(--text);}
+.data-value.up{color:var(--green);}
+.data-value.down{color:var(--red);}
+
+.divider{height:1px;background:var(--border);margin:44px 0;position:relative;}
+.divider::after{content:'◆';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--bg);padding:0 16px;color:var(--border-accent);font-size:10px;}
+
+.conclusion{background:linear-gradient(135deg,var(--accent-dim) 0%,transparent 100%);border:1px solid var(--border);border-radius:6px;padding:32px;margin-top:44px;}
+.conclusion h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:16px;color:var(--accent-light);}
+.conclusion p{color:var(--text-muted);font-size:15px;line-height:1.8;}
+
+.footer{text-align:center;padding-top:40px;margin-top:48px;border-top:1px solid var(--border);}
+.footer p{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text-dim);letter-spacing:0.5px;}
+
+@media(max-width:600px){
+  .newsletter{padding:24px 16px 60px;}
+  .header h1{font-size:28px;}
+  .section h2{font-size:22px;}
+  .tick-value{font-size:14px;}
+  .summary-box,.data-card,.conclusion{padding:20px;}
+}
+</style>
+</head>
+<body>
+<div class="newsletter">
+
+  <div class="header">
+    <div class="header-label">Bản Tin Thị Trường</div>
+    <h1>Điểm Tin Tài Chính</h1>
+    <div class="header-date">Thứ Năm, 03 tháng 04 năm 2026 &nbsp;·&nbsp; Tuần 6, Ngày 33 xung đột Iran</div>
+  </div>
+
+  <div class="summary-box">
+    <h3>Tổng Quan Phiên 02/04</h3>
+    <p>
+      Phiên giao dịch đầy kịch tính: S&P 500 mở cửa giảm −1,5% sau bài phát biểu của TT Trump không đưa ra lộ trình ngừng bắn, nhưng hồi phục hoàn toàn về bằng (+0,1%) nhờ tín hiệu Iran soạn giao thức quản lý tàu thuyền qua Hormuz. Dầu WTI vọt từ $97 lên gần $114 — hai thị trường đang đọc hai kịch bản hoàn toàn khác nhau. Tính cả tuần: S&P +3,4%, Nasdaq +4,4% — tuần mạnh nhất năm 2026. Tại Việt Nam, VN-Index trụ vững trên 1.700 trước áp lực chốt lời, dòng tiền lan tỏa sang mid-cap và nhóm BĐS nhờ mùa ĐHCĐ.
+    </p>
+  </div>
+
+  <!-- TICKERS -->
+  <div class="ticker-strip">
+    <div class="tick">
+      <div class="tick-name">S&P 500</div>
+      <div class="tick-value">6.583</div>
+      <div class="tick-change up">+0,1%</div>
+    </div>
+    <div class="tick">
+      <div class="tick-name">Gold</div>
+      <div class="tick-value">4.665</div>
+      <div class="tick-change down">−2,0%</div>
+    </div>
+    <div class="tick">
+      <div class="tick-name">DXY</div>
+      <div class="tick-value">↑</div>
+      <div class="tick-change up">Tăng</div>
+    </div>
+    <div class="tick">
+      <div class="tick-name">WTI</div>
+      <div class="tick-value">$108–111</div>
+      <div class="tick-change up">+9%</div>
+    </div>
+    <div class="tick">
+      <div class="tick-name">VNI</div>
+      <div class="tick-value">>1.700</div>
+      <div class="tick-change up">Trụ vững</div>
+    </div>
+    <div class="tick">
+      <div class="tick-name">BTC</div>
+      <div class="tick-value">66.813</div>
+      <div class="tick-change down">−2,3%</div>
+    </div>
+  </div>
+
+  <!-- I. WALL STREET -->
+  <div class="section">
+    <span class="section-tag">Thị Trường Mỹ</span>
+    <h2>Phiên "whiplash": Giảm 1,5% rồi hồi phục về bằng — Tuần mạnh nhất 2026</h2>
+    <p>
+      Bài phát biểu toàn quốc của TT Trump tối thứ Tư không mang lại lộ trình ngừng bắn cụ thể. Ông khẳng định mục tiêu quân sự tại Iran "sắp hoàn tất" nhưng đồng thời cảnh báo sẽ tiếp tục không kích "cực kỳ mạnh" trong 2–3 tuần tới, tuyên bố hải quân Iran "đã biến mất" và không quân "tan nát." Về Hormuz, lập trường rõ ràng: Mỹ sẽ không tự mở eo biển, các quốc gia phụ thuộc Hormuz cần tự lo.
+    </p>
+    <p>
+      Phiên thứ Năm mở cửa trong sắc đỏ: S&P 500 −1,5%, Nasdaq −2,2%, Dow −1,4%. Dầu WTI vọt từ $97 lên gần $114. Chứng khoán châu Á phản ứng tiêu cực — Nikkei đảo chiều giảm, Kospi sụt hơn 3%. Tuy nhiên, giữa phiên xuất hiện bước ngoặt: IRNA đưa tin Iran đang soạn giao thức với Oman để quản lý tàu thuyền qua Hormuz kèm cơ chế thu phí. Dù Mỹ gọi việc thu phí là "không thể chấp nhận," thị trường cổ phiếu diễn giải đây là bước đầu của de-escalation. Lực mua bùng lên, kéo chỉ số hồi phục hoàn toàn.
+    </p>
+
+    <div class="data-card">
+      <h4>Kết quả phiên 02/4 & Tuần</h4>
+      <div class="data-row">
+        <span class="data-label">S&P 500 (phiên)</span>
+        <span class="data-value up">+0,1% → 6.582,70</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Nasdaq (phiên)</span>
+        <span class="data-value up">+0,2% → 21.879,18</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Dow Jones (phiên)</span>
+        <span class="data-value down">−0,1% → 46.504,60</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">S&P 500 (tuần)</span>
+        <span class="data-value up">+3,4%</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Nasdaq (tuần)</span>
+        <span class="data-value up">+4,4%</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Dow Jones (tuần)</span>
+        <span class="data-value up">+3,0%</span>
+      </div>
+    </div>
+
+    <div class="highlight">
+      Hai thị trường đang đọc hai kịch bản khác nhau: trader cổ phiếu đặt cược vào post-war rally, trader dầu giữ giá cao vì thực tế chưa thay đổi. Một bên đang sai — và giới hạn 60 ngày của War Powers Act (còn ~28 ngày) đang tạo áp lực thời gian lên Nhà Trắng.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- II. DẦU & HÀNG HÓA -->
+  <div class="section">
+    <span class="section-tag">Năng Lượng & Hàng Hóa</span>
+    <h2>Dầu WTI vọt lên $108–114 — Phân kỳ cực độ với cổ phiếu</h2>
+    <p>
+      Dầu WTI tăng khoảng 9% trong phiên, vọt từ $97 lên gần $114 trước khi điều chỉnh về vùng $108–111 cuối ngày. Brent tiến sát mốc $100/thùng. Nguyên nhân trực tiếp: bài phát biểu của TT Trump không đưa ra lộ trình mở lại Hormuz, đồng thời cảnh báo tiếp tục không kích mạnh. Giá xăng trung bình tại Mỹ vẫn trên $4/gallon — đây là áp lực chính trị thực sự.
+    </p>
+    <p>
+      Oxford Economics nhận định: mỗi ngày Hormuz đóng là thêm một ngày thế giới đốt kho dự trữ chiến lược — đây không phải tình huống có thể kéo dài vô hạn. Ràng buộc pháp lý từ War Powers Act (60 ngày hành động đơn phương, sau đó cần Quốc hội phê chuẩn) cộng với áp lực giá xăng trước bầu cử giữa kỳ đang thu hẹp thời gian hành động của Nhà Trắng.
+    </p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- III. VÀNG & CRYPTO -->
+  <div class="section">
+    <span class="section-tag">Vàng & Tiền Mã Hóa</span>
+    <h2>Vàng giảm 2% giữa địa chính trị nóng — Crypto tiếp tục yếu</h2>
+    <p>
+      Vàng tiếp tục diễn biến phản trực giác: spot gold giảm 2% xuống $4.665/oz, futures giảm 2,5% xuống $4.693/oz trong khi địa chính trị cực nóng. Cơ chế: dầu tăng mạnh → kỳ vọng lạm phát cao hơn → kỳ vọng lãi suất cao hơn và dài hơn → USD tăng (safe haven) → vàng bị kém hấp dẫn do không có lợi suất khi lãi suất thực kỳ vọng tăng. Bạc giảm mạnh hơn, −3,2% xuống $72,66/oz.
+    </p>
+    <p>
+      Bitcoin giảm 2,3% xuống $66.813, dao động trong vùng $64.000–$73.000 kể từ đầu tháng 2. Ether −4,5% xuống $2.059, altcoin giảm 3–5%. Tin tích cực duy nhất: ETF Bitcoin ghi nhận dòng vào ròng $1,2 tỷ trong tháng 3, lần đầu sau 4 tháng rút ròng liên tiếp. Tuy nhiên, mỗi khi địa chính trị thật sự nóng, crypto vẫn bị bán — câu chuyện "kho giá trị số" chỉ hoạt động khi rủi ro là vĩ mô/tiền tệ, không phải khi rủi ro liên quan đến xung đột thực.
+    </p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- IV. CỔ PHIẾU NỔI BẬT -->
+  <div class="section">
+    <span class="section-tag">Cổ Phiếu Đáng Chú Ý</span>
+    <h2>Tesla miss giao xe Q1, Globalstar +13% nhờ Amazon, nhóm dược áp lực thuế quan</h2>
+    <p>
+      <strong>Tesla (−5,4%):</strong> Giao xe Q1 đạt 358.023 chiếc, thấp hơn kỳ vọng 372.160 — quý thứ hai liên tiếp miss. Sản xuất đạt 408.386 chiếc nhưng giao xe không theo kịp. Wedbush giữ Outperform với target $600, cho rằng AI và Robotaxi mới là câu chuyện thực 2026–2030. Truist hạ target từ $438 xuống $400, giữ Hold.
+    </p>
+    <p>
+      <strong>Globalstar (+13,4%):</strong> Amazon đang đàm phán mua lại để thúc đẩy Project Kuiper — câu chuyện dài hạn về vệ tinh và băng thông toàn cầu.
+    </p>
+    <p>
+      <strong>Nhóm dược phẩm:</strong> Eli Lilly −1%, J&J −0,4%, Novo Nordisk −1,6%, Pfizer −0,8%, AbbVie −0,5% sau thông tin TT Trump chuẩn bị áp thuế 100% lên một số dược phẩm nhập khẩu từ các công ty chưa ký thỏa thuận với Nhà Trắng. Pfizer, AstraZeneca và Novo Nordisk đã ký thỏa thuận và được miễn trừ hoặc chịu thuế thấp hơn.
+    </p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- V. VĨ MÔ TRONG NƯỚC -->
+  <div class="section">
+    <span class="section-tag">Vĩ Mô Việt Nam</span>
+    <h2>Lãi suất rục rịch tăng, PMI giảm — nhưng xuất khẩu lập kỷ lục</h2>
+    <p>
+      Lãi suất huy động tại các ngân hàng bắt đầu điều chỉnh tăng trong tháng 4. NHNN liên tục chỉ đạo TCTD thực hiện giải pháp ổn định mặt bằng lãi suất nhằm kiềm chế chi phí vốn. PMI tháng 3 giảm xuống 51,2 điểm — vẫn trong vùng mở rộng nhưng cho thấy áp lực chi phí đầu vào đang cản trở đà tăng trưởng.
+    </p>
+    <p>
+      Thủ tướng đã ra công điện hỏa tốc yêu cầu xây dựng ngay kho dầu thô dự trữ tại Nghi Sơn nhằm bảo đảm an ninh năng lượng. TP.HCM dự kiến miễn phí hạ tầng cảng biển để giảm gánh nặng chi phí vận tải. Điểm sáng: xuất khẩu nông lâm thủy sản Q1/2026 đạt kỷ lục gần 16,7 tỷ USD (+5,9%).
+    </p>
+    <p>
+      Về ngoại giao, Iran đang triển khai thủ tục cho phép tàu Việt Nam qua Hormuz sau đề nghị của Bộ Ngoại giao. Philippines cũng nhận cam kết tương tự. Các nước ASEAN đang tự xử lý vấn đề Hormuz qua kênh song phương thay vì chờ Mỹ-Iran giải quyết — tín hiệu tích cực cho nguồn cung năng lượng trong nước.
+    </p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- VI. VNINDEX -->
+  <div class="section">
+    <span class="section-tag">Thị Trường Việt Nam</span>
+    <h2>VN-Index trụ vững trên 1.700 — PYN Elite nâng sở hữu SHS lên 5,26%</h2>
+    <p>
+      VN-Index phiên 02/4 vượt qua bài test áp lực chốt lời thành công, tiếp tục giữ trên mốc 1.700. Sắc xanh lan tỏa tích cực với số mã tăng nhiều gấp đôi số mã giảm. Dòng tiền ưu ái rõ rệt nhóm cổ phiếu vừa và nhỏ, đặc biệt nhóm chứng khoán và bất động sản, được tiếp sức bởi mùa ĐHCĐ 2026 với hàng loạt thông tin kế hoạch kinh doanh kỷ lục.
+    </p>
+
+    <div class="data-card">
+      <h4>Kế hoạch kinh doanh 2026 — Bluechips tiêu biểu</h4>
+      <div class="data-row">
+        <span class="data-label">Vingroup (VIC)</span>
+        <span class="data-value">DT 450.000 tỷ đồng</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Vinhomes (VHM)</span>
+        <span class="data-value">Cổ tức ~25.000 tỷ đồng</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Hòa Phát (HPG)</span>
+        <span class="data-value up">LNST 22.000 tỷ (+42%)</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Vinamilk (VNM)</span>
+        <span class="data-value">DT kỷ lục, cổ tức ≥50%</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">PNJ</span>
+        <span class="data-value up">Lãi ròng >3.400 tỷ (+21%)</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Masan (MSN)</span>
+        <span class="data-value up">Lãi đột biến 2.740 tỷ từ bán MSR</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">SSI</span>
+        <span class="data-value">Tăng vốn lên 30.000 tỷ</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">VPBank</span>
+        <span class="data-value">Huy động vượt 1 triệu tỷ</span>
+      </div>
+    </div>
+
+    <p>
+      <strong>Điểm nóng: PYN Elite Fund</strong> nâng sở hữu tại SHS (HNX) lên 5,26% (47,3 triệu CP), chính thức trở thành cổ đông lớn. Chỉ trong hai phiên 31/3 và 01/4, khối ngoại mua ròng tại SHS lần lượt 256 tỷ và 145 tỷ đồng. Quỹ Phần Lan đang tái cơ cấu danh mục, tập trung vào nhóm chứng khoán (13,4% tỷ trọng quỹ, sau ngân hàng 35%). Lý do: SHS giao dịch quanh 17.000 đ/cp, thấp xa so với đỉnh 30.000 đ tháng 9/2025; và ngày 8/4, FTSE dự kiến xác nhận nâng hạng thị trường Việt Nam — nhóm CTCK hưởng lợi trực tiếp khi thanh khoản tăng đồng nghĩa doanh thu môi giới và margin tăng.
+    </p>
+
+    <div class="highlight">
+      Ngày 8/4: FTSE Russell dự kiến xác nhận nâng hạng Việt Nam vào rổ Emerging Markets (có hiệu lực từ tháng 9/2026). Dòng vốn thụ động sẽ bắt đầu dịch chuyển trước thời điểm chính thức. PYN Elite đang đi trước thị trường.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- VII. CHIẾN LƯỢC -->
+  <div class="section">
+    <span class="section-tag">Chiến Lược Phiên 03/4</span>
+    <h2>Thận trọng đầu phiên — ưu tiên bluechips cổ tức cao và nhóm hưởng lợi nâng hạng</h2>
+    <p>
+      VN-Index bước vào phiên 03/4 đối mặt sức ép tâm lý từ đà giảm sâu của chứng khoán châu Á (Kospi −3%, Nikkei đảo chiều), khối ngoại bán ròng liên tục, và yếu tố mùa vụ tiêu cực (tháng 4 giảm 4 năm liên tiếp). Tuy nhiên, bệ đỡ từ mùa ĐHCĐ với các kế hoạch lợi nhuận kỷ lục và chính sách cổ tức hấp dẫn sẽ giúp hạn chế biên độ giảm.
+    </p>
+    <p>
+      <strong>Về kỹ thuật:</strong> VN-Index đang trong giai đoạn tích lũy sau nhịp hồi, vượt Middle Bollinger Bands — tín hiệu tích cực ngắn hạn. Vùng cản tiếp theo quanh 1.710 điểm. Vùng hỗ trợ quan trọng: 1.650. Kịch bản chủ đạo: tăng trong nghi ngờ, đan xen rung lắc và phân hóa mạnh giữa các nhóm ngành.
+    </p>
+    <p>
+      <strong>Khuyến nghị:</strong> Hạn chế mua đuổi giá cao trong nhịp hưng phấn. Ưu tiên canh điều chỉnh quanh 1.700 để cơ cấu danh mục. Duy trì tỷ trọng tiền mặt hợp lý, hạ margin. Nhóm ưu tiên: bluechips cổ tức tiền mặt cao (VHM, VNM), CTCK hưởng lợi nâng hạng (SHS, SSI), và cổ phiếu định giá hấp dẫn chưa tăng nhiều hoặc đang ở vùng đáy kỹ thuật.
+    </p>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="conclusion">
+    <h3>Nhận Định Tổng Quan</h3>
+    <p>
+      Tuần thứ năm xung đột Iran khép lại với Wall Street ghi nhận tuần mạnh nhất năm 2026. Nhưng phiên thứ Năm là bức tranh thu nhỏ của toàn bộ giai đoạn này: dầu tăng 9% trong khi cổ phiếu về bằng — hai thị trường đang đọc hai kịch bản khác nhau. Ràng buộc pháp lý từ War Powers Act (còn ~28 ngày) và áp lực giá xăng trước bầu cử giữa kỳ đang thu hẹp thời gian hành động của Nhà Trắng. Ngày 8/4 là mốc quan trọng với nhà đầu tư Việt Nam (FTSE nâng hạng). Nonfarm Payrolls tháng 3 công bố thứ Sáu sẽ phản ánh vào phiên thứ Hai.
+    </p>
+    <p style="margin-top:14px;color:var(--accent-light);font-weight:600;">
+      Câu hỏi thực sự của tuần tới: ai đúng — trader cổ phiếu hay trader dầu?
+    </p>
+  </div>
+
+  <div class="footer">
+    <p>Điểm Tin Tài Chính — 03/04/2026</p>
+    <p style="margin-top:6px;">Nội dung chỉ mang tính chất tham khảo, không phải khuyến nghị đầu tư.</p>
+  </div>
+
+</div>
+</body>
+</html>
